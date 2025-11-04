@@ -18596,9 +18596,11 @@ body.dark-version {
   background-size: cover;
   background-position: 50%;
 }
+
 .page-header .container {
   z-index: 1;
 }
+
 .page-header video {
   position: absolute;
   top: 50%;

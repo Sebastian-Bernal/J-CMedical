@@ -49,7 +49,6 @@
 
 @media (min-width: 768px) {
   .img-custom {
-    max-width: 200px;
     height: 400px;
   }
 }

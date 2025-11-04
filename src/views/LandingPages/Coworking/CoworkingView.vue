@@ -9,6 +9,7 @@ import Header from "../../../examples/Header.vue";
 
 //Vue Material Kit 2 Pro components
 import MaterialButton from "../../../components/MaterialButton.vue";
+import MaterialInput from "../../../components/MaterialInput.vue"
 
 //sections
 import Information from "./Sections/CoworkingInformation.vue";
@@ -16,6 +17,7 @@ import Testimonials from "./Sections/CoworkingTestimonials.vue";
 import AboutUs from "./Sections/CoworkingAboutUs.vue";
 import Places from "./Sections/CoworkingPlaces.vue";
 import { useAppStore } from "../../../stores";
+import ContactView from "../../Support/ContactUs/ContactView.vue";
 
 //hooks
 const body = document.getElementsByTagName("body")[0];
@@ -34,6 +36,14 @@ function cerrarModal() {
 }
 </script>
 <template>
+  <div class="container-custom"></div>
+
+  <Header image="public/JYC_BANNER.png" title="." minHeight="min-vh-100"
+  :description="{
+    class: 'pe-md-5 me-md-5 opacity-8',
+  }" mask="mask bg-gradient-dark opacity-0">
+  </Header>
+
   <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
       <div class="col-12">
@@ -42,29 +52,19 @@ function cerrarModal() {
     </div>
   </div>
 
-  <Header image="public/JYC_BANNER.png" title="J&C Medical"
-    :description="{
-      text: 'Tecnología confiable para el cuidado de la vida.',
-      class: 'pe-md-5 me-md-5 opacity-8',
-    }" mask="mask bg-gradient-dark opacity-5">
-    <div class="buttons">
-      <MaterialButton variant="gradient" color="" class="mt-4 contacto">Contacto</MaterialButton>
-      <MaterialButton color="none" class="mt-4 text-white shadow-none">Sobre Nosotros</MaterialButton>
-    </div>
-  </Header>
-
-  <div id="Inicio" class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n3 mb-4">
+  <div id="Inicio" class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n4 mb-4 pt-6" >
     <Information />
     <Testimonials />
     <AboutUs id="SobreNosotros" />
     <Places id="Productos" />
-
     <div id="Contactanos" class="container">
       <div class="my-10 py-5 bg-gradient-dark position-relative border-radius-xl" 
-      :style="{ backgroundImage: 'url(public/banner-medico-con-medico-usando-equipo.jpg)',}" 
+      style="background-image: url('public/JYC_BANNER.png'); background-size: cover; background-position: start;"
       loading="lazy">
+      <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-7"></div>
+
         <div class="container position-relative z-index-2">
-          <div class="row">
+          <div class="row container-contacto">
             <div class="col-lg-5 col-md-8 m-auto text-start">
               <h5 class="text-white mb-lg-0 mb-5">
                 ¿Buscas un accesorio específico?<br />
@@ -74,7 +74,7 @@ function cerrarModal() {
             <div class="col-lg-6 m-auto">
               <div class="row">
                 <div class="col-sm-4 col-6 ps-sm-0 ms-auto">
-                  <button class="btn-custom">
+                  <button class="btn btn-primary" style="background-color: #dd9d5c;">
                     Contactanos
                   </button>
                 </div>
@@ -84,21 +84,23 @@ function cerrarModal() {
         </div>
       </div>
     </div>
-
+    <ContactView/>
   </div>
+
   <DefaultFooter />
 
+  <!-- Modal productos -->
   <div class="fondo" v-if="store.showModal">
     <div class="modal-custom">
       <div class="header-modal-custom">
         <h3>{{ store.informacion.title }}</h3>
         <button @click="cerrarModal()" type="button" class="btn-close text-xl py-3 opacity-10" data-bs-dismiss="alert"
           aria-label="Close">
-          <span aria-hidden="true" class="text-xl font-weight-bold text-dark">&times;</span>
+          <i class="material-icons text-xl font-weight-bold text-dark">close</i>
         </button>
       </div>
       <div class="header-modal-body">
-        <img :src="store.informacion.image" alt="" loading="lazy">
+        <!-- <img :src="store.informacion.image" alt="" loading="lazy"> -->
         <img v-for="image in store.informacion.images" :src="image" alt="" loading="lazy">
       </div>
     </div>
@@ -120,7 +122,6 @@ function cerrarModal() {
 .btn-custom {
   border: none;
   border-radius: 10px;
-  padding: 5px 45px;
   color: white;
   background-color: #0000ff;
   text-transform: uppercase;
@@ -128,6 +129,14 @@ function cerrarModal() {
   font-weight: bold;
 }
 
+.container-custom {
+  background: linear-gradient(180deg,rgba(244, 244, 244, 1) 3%, rgba(34, 98, 163, 1) 40%, rgba(235, 237, 240, 1) 100%);
+  height: 130vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
 
 .fondo {
   position: fixed;
@@ -184,9 +193,12 @@ function cerrarModal() {
 
 .header-modal-body {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  max-height: 60vh;
+  min-height: 40vh;
   overflow-y: auto;
 }
 
@@ -195,5 +207,10 @@ function cerrarModal() {
   max-height: 60vh;
   object-fit: contain;
   border-radius: 8px;
+}
+
+.container-contacto {
+  display: flex;
+
 }
 </style>

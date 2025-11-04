@@ -104,9 +104,9 @@ function abrirModal(title) {
       </div>
 
       <div class="row mt-5" v-for="(grupo, filaIndex) in tarjetasPorFila" :key="filaIndex">
-        <div class="col-lg-4 mb-lg-0 mb-4" v-for="(tarjeta, colIndex) in grupo" :key="colIndex">
+        <div class="col-lg-4 mb-4" v-for="(tarjeta, colIndex) in grupo" :key="colIndex">
           <SimpleBlogCard :image="tarjeta.image" :title="tarjeta.title" :description="tarjeta.description"
-            :action="{ color: 'dark', action: abrirModal }" />
+            :action="{ color: 'dark', action: abrirModal }" class="mb-4" />
         </div>
       </div>
 

@@ -123,22 +123,20 @@ watch(
       <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
         <ul class="navbar-nav navbar-nav-hover ms-auto">
           <li class="nav-item dropdown dropdown-hover mx-2">
-            <a href="#Inicio" role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center text-dark"
-              :class="getTextColor()" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="#Inicio" class="nav-link ps-2 d-flex cursor-pointer align-items-center text-dark"
+              :class="getTextColor()">
               <i class="material-icons opacity-6 me-2 text-md" :class="getTextColor()">dashboard</i>
               Inicio
             </a>
           </li>
           <li class="nav-item dropdown dropdown-hover mx-2">
-            <a href="#SobreNosotros" role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" :class="getTextColor()"
-              id="dropdownMenuAccount" data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="#SobreNosotros" role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" :class="getTextColor()">
               <i class="material-icons opacity-6 me-2 text-md" :class="getTextColor()">contacts</i>
               Sobre Nosotros
             </a>
           </li>
           <li class="nav-item dropdown dropdown-hover mx-2">
-            <a href="#Productos" role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" :class="getTextColor()"
-              id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="#Productos" role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" :class="getTextColor()">
               <i class="material-icons opacity-6 me-2 text-md" :class="getTextColor()">view_day</i>
               Productos
             </a>
