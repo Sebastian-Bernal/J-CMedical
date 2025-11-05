@@ -44,23 +44,35 @@ defineProps({
 });
 </script>
 <template>
-  <header class="header-2">
+  <header class="header-2 position-relative">
     <div class="section-actions">
       <div class="buttons-custom">
-        <button class="btn btn-primary" style="background-color: #dd9d5c;">Contactanos</button>
-        <button class="btn btn-dark">Sobre Nosotros</button>
+        <a href="#Contactanos" class="btn btn-primary" style="background-color: #dd9d5c;">Contactanos</a>
+        <a href="#SobreNosotros" class="btn btn-dark">Sobre Nosotros</a>
       </div>
     </div>
 
     <div class="section-buttons">
       <div class="buttons-custom">
-        <a href="https://twitter.com/creativetim" target="_blank">A</a>
-        <a href="https://www.facebook.com/CreativeTim/" target="_blank">F</a>
-        <a href="https://www.facebook.com/CreativeTim/" target="_blank">W</a>
+        <a href="https://www.instagram.com/" target="_blank">
+          <img src="public/instagram_icon_138461.png" alt="instagram" />
+        </a>
+        <a href="https://www.facebook.com/" target="_blank">
+          <img src="public/social_facebook_fb_75.png" alt="facebook" width="25px" />
+        </a>
+        <a href="https://www.whatsapp.com/?lang=es" target="_blank">
+          <img src="public/whatsapp_icon-icons.com_65489.png" alt="whatsApp" />
+        </a>
       </div>
     </div>
 
-    <img :src="image" class="page-header-custom"/>
+    <img :src="image" class="page-header-custom" />
+    <div class="textoImagen">
+      <div class="textoContainer">
+        <img src="public/texto_l.png" alt="eslogan izquierdo" class="textIzquierdo">
+        <img src="public/texto_r.png" alt="eslogan derecho" class="textDerecho">
+      </div>
+    </div>
   </header>
 
   <div class="abajo">
@@ -70,10 +82,27 @@ defineProps({
       </a>
     </div>
   </div>
-  
+
 </template>
 
 <style scoped>
+.textoImagen {
+  position: absolute;
+  bottom: 10vh;
+  left: 2rem;
+  right: 2rem;
+}
+
+.textoContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.textoImagen img {
+  width: 22%;
+}
+
 .page-header-custom {
   width: 100%;
   max-height: 100vh;
@@ -110,23 +139,32 @@ defineProps({
 
 .buttons-custom {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+}
+
+.buttons-custom img {
+  width: 80%;
+  object-fit: cover;
 }
 
 .section-buttons a {
+  background-color: white;
   border-radius: 50%;
-  background-color: black;
-  width: 2rem;
+  width: 35px;
   height: 35px;
+  padding: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  opacity: 1;
+}
+
+.section-buttons a:hover {
+  background-color: #edeff2;
 }
 
 .abajo {
   position: absolute;
-  color: #f10000;
   bottom: 35px;
   left: 0;
   right: 0;
@@ -146,27 +184,73 @@ defineProps({
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(8px);
   }
+
   100% {
     transform: translateY(0);
   }
 }
 
+@media screen and (max-width: 980) {
+  .textoImagen {
+    bottom: 5vh;
+    left: 2rem;
+    right: 2rem;
+  }
+}
+
 @media screen and (max-width: 724px) {
+  .textoImagen {
+    position: inherit;
+    bottom: 5vh;
+    left: 0;
+    right: 0;
+  }
+
+  .textoContainer {
+    padding: 0 2rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .textIzquierdo {
+    align-self: start;
+  }
+
+  .textDerecho {
+    align-self: end;
+  }
+
+  .textoImagen img{
+    width: 40%;
+  }
+
   .section-buttons {
     top: 10px;
     right: 20px;
   }
 
+  .section-actions {
+    top: 10px;
+    left: 10px;
+  }
+
   .buttons-custom {
-    gap: 1px;
+    gap: 2px;
+  }
+
+  .buttons-custom a {
+    height: 30px;
+    font-size: 10px;
   }
 
   .section-buttons a {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
   }
 }
+
 </style>

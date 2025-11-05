@@ -16,7 +16,7 @@ defineProps({
       class: "",
     }),
   },
-  value: {
+  modelValue: {
     type: String,
     default: "",
   },
@@ -68,6 +68,8 @@ function getClasses(size, success, error) {
 
   return `${sizeValue} ${isValidValue}`;
 }
+
+const emit = defineEmits(['update:modelValue'])
 </script>
 <template>
   <div class="input-group">
@@ -82,7 +84,8 @@ function getClasses(size, success, error) {
       :type="type"
       class="form-control"
       :class="[getClasses(size, success, error), inputClass]"
-      :value="value"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
       :placeholder="placeholder"
       :isRequired="required"
       :disabled="disabled"

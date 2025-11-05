@@ -85,7 +85,6 @@ function abrirModal(title) {
   store.showModal = true
   const item = tarjetas.find((p) => p.title === title)
   store.informacion = item
-  console.log(item)
 }
 
 </script>

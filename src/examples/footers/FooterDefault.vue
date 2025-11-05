@@ -54,17 +54,17 @@ defineProps({
           {
             name: "Acerca de Nosotros",
             href: "#SobreNosotros",
-            target: 'none'
+            target: ''
           },
           {
             name: "Productos",
             href: "#Productos",
-            target: 'none'
+            target: ''
           },
           {
             name: "Inicio",
             href: "#Inicio",
-            target: 'none'
+            target: ''
           },
         ],
       },
@@ -73,22 +73,22 @@ defineProps({
         items: [
           {
             name: "Contactanos",
-            href: "https://www.creative-tim.com/contact-us",
-            target: '_blank',
+            href: "#Contactanos",
+            target: '',
           },
           {
             name: "Facebook",
-            href: "https://www.creative-tim.com/knowledge-center",
+            href: "https://www.facebook.com/",
             target: '_blank',
           },
           {
             name: "Instagram",
-            href: "https://services.creative-tim.com/",
+            href: "https://www.instagram.com/",
             target: '_blank',
           },
           {
             name: "Gmail",
-            href: "https://www.creative-tim.com/sponsorships",
+            href: "https://mail.google.com/",
             target: '_blank',
           },
         ],
@@ -98,17 +98,14 @@ defineProps({
         items: [
           {
             name: "terms & conditions",
-            href: "https://www.creative-tim.com/terms",
             target: '_blank',
           },
           {
             name: "privacy policy",
-            href: "https://www.creative-tim.com/privacy",
             target: '_blank',
           },
           {
             name: "licenses (EULA)",
-            href: "https://www.creative-tim.com/license",
             target: '_blank',
           },
         ],
@@ -138,7 +135,6 @@ defineProps({
                 <a
                   class="nav-link pe-1"
                   :href="link"
-                  target="_blank"
                   v-html="icon"
                 >
                 </a>
@@ -167,7 +163,7 @@ defineProps({
               Todos los derechos reservados. Copyright ©
               {{ new Date().getFullYear() }}
               J&C MEDICAL
-              <a href="https://www.creative-tim.com" target="_blank"
+              <a target="_blank"
                 >Compañia</a
               >.
             </p>

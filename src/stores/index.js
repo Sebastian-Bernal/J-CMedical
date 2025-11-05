@@ -4,7 +4,9 @@ export const useAppStore = defineStore("storeId", {
   state: () => ({
     bootstrap,
     showModal: false,
-    informacion: {}
+    informacion: {},
+    showAlert: false,
+    alert: {}
   }),
 
   actions: {

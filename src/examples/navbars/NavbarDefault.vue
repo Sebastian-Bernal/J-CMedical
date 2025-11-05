@@ -5,7 +5,6 @@ import { useWindowsWidth } from "../../assets/js/useWindowsWidth";
 
 // images
 import ArrDark from "@/assets/img/down-arrow-dark.svg";
-import downArrow from "@/assets/img/down-arrow.svg";
 import DownArrWhite from "@/assets/img/down-arrow-white.svg";
 
 const props = defineProps({
@@ -108,7 +107,7 @@ watch(
           : 'font-weight-bolder text-lg ms-sm-3'
       ]" :to="{ name: 'presentation' }" rel="tooltip" title="Nombre Compañia" data-placement="bottom">
         <img src="src/assets/img/products/jyc_logo.png" width="20" alt="Logo J&C Medical"/>
-        J&C MEDICAL
+        <span class="color-default">J&C MEDICAL</span>
       </RouterLink>
 
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -142,12 +141,6 @@ watch(
             </a>
           </li>
         </ul>
-        <!-- <ul class="navbar-nav d-lg-block d-none">
-          <li class="nav-item">
-            <a :href="action.route" class="btn btn-sm mb-0" :class="action.color"
-              onclick="smoothToPricing('pricing-soft-ui')">{{ action.label }}</a>
-          </li>
-        </ul> -->
       </div>
     </div>
   </nav>

@@ -56,7 +56,7 @@
 /* Escritorio (≥1024px) */
 @media (min-width: 1024px) {
   .img-custom {
-    max-width: 500px;
+    max-width: 400px;
     height: 500px;
   }
 }

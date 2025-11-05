@@ -4,6 +4,7 @@ import { onMounted, ref, watch } from "vue";
 //example components
 import DefaultNavbar from "../../../examples/navbars/NavbarDefault.vue";
 import DefaultFooter from "../../../examples/footers/FooterDefault.vue";
+import emailjs from '@emailjs/browser'
 
 //image
 import image from "../../../../public/mano-en-guante-medico-apuntando-la-tecnologia-medica-de-pantalla-virtual.jpg"
@@ -12,13 +13,16 @@ import image from "../../../../public/mano-en-guante-medico-apuntando-la-tecnolo
 import MaterialInput from "../../../components/MaterialInput.vue";
 import MaterialTextArea from "../../../components/MaterialTextArea.vue";
 import MaterialButton from "../../../components/MaterialButton.vue";
+import MaterialAlert from "../../../components/MaterialAlert.vue";
 
 // material-input
 import setMaterialInput from "@/assets/js/material-input";
+import { useAppStore } from "../../../stores";
 onMounted(() => {
   setMaterialInput();
 });
 
+const store = useAppStore();
 const formData = ref({
   nombre: '',
   correo: '',
@@ -26,13 +30,71 @@ const formData = ref({
   mensaje: '',
 })
 
-watch((formData) => (newValue) => {
-  console.log(newValue)
-})
+async function enviarMensaje(event) {
+  event.preventDefault();
 
-function enviarMensaje () {
-  console.log('enviando...')
+  const { nombre, correo, nit, mensaje } = formData.value;
+
+  // Validaciones
+  if (!nombre || !correo || !nit || !mensaje) {
+    mostrarAlerta('Por favor completa todos los campos.', 'warning');
+    return;
+  }
+
+  if (!validarCorreo(correo)) {
+    mostrarAlerta('El correo electrónico no es válido.', 'warning');
+    return;
+  }
+
+  if (nit.length < 5) {
+    mostrarAlerta('El NIT debe tener al menos 5 caracteres.', 'warning');
+    return;
+  }
+
+  if (mensaje.length < 10) {
+    mostrarAlerta('El mensaje debe tener al menos 10 caracteres.', 'warning');
+    return;
+  }
+
+  // Si todo está bien, enviar el mensaje
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_SERVICE_ID,
+      import.meta.env.VITE_TEMPLATE_ID,
+      formData.value,
+      import.meta.env.VITE_PUBLIC_KEY
+    );
+    mostrarAlerta('Mensaje enviado correctamente ✅', 'success');
+    formData.value = {
+      nombre: '',
+      correo: '',
+      nit: '',
+      mensaje: '',
+    }
+  } catch (error) {
+    console.error('Error al enviar:', error);
+    mostrarAlerta('Hubo un problema al enviar el mensaje ❌', 'danger');
+  }
 }
+
+// Función para mostrar alertas
+function mostrarAlerta(texto, color) {
+  store.alert.texto = texto;
+  store.alert.color = color;
+  store.showAlert = true;
+
+  setTimeout(() => {
+    store.showAlert = false;
+  }, 1200); // ⏱️ 1,2 segundos para que el usuario lo lea
+}
+
+// Validación de correo electrónico
+function validarCorreo(correo) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(correo);
+}
+
+
 </script>
 <template>
   <!-- <div class="container position-sticky z-index-sticky top-0">
@@ -49,8 +111,9 @@ function enviarMensaje () {
       </div>
     </div>
   </div> -->
+
   <section>
-    <div class="page-header min-vh-80">
+    <div class="page-header max-vh-80">
       <div class="container">
         <div class="row">
           <div
@@ -59,7 +122,8 @@ function enviarMensaje () {
               :style="{
                 backgroundImage: `url(${image})`,
                 backgroundSize: 'cover',
-              }" loading="lazy"></div>
+              }" loading="lazy">
+            </div>
           </div>
           <div class="mt-8 col-xl-5 col-lg-6 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
             <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
@@ -78,26 +142,27 @@ function enviarMensaje () {
                     <div class="row">
                       <div class="col-md-6">
                         <MaterialInput class="input-group-static mb-4" type="text" label="Nombre completo"
-                          placeholder="Ej. Juan Perez" v-model="formData.nombre"/>
+                          placeholder="Ej. Juan Perez" v-model="formData.nombre" :modelValue="formData.nombre" />
                       </div>
                       <div class="col-md-6 ps-md-2">
                         <MaterialInput class="input-group-static mb-4" type="email" label="Correo"
-                          placeholder="juan@gmail.com" v-model="formData.correo"/>
+                          placeholder="juan@gmail.com" v-model="formData.correo" :modelValue="formData.correo" />
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12">
-                        <MaterialInput class="input-group-static mb-4" type="text" label="NIT"
-                          placeholder="Digita NIT" v-model="formData.nit"/>
+                        <MaterialInput class="input-group-static mb-4" type="text" label="NIT" placeholder="Digita NIT"
+                          v-model="formData.nit" :modelValue="formData.nit" />
                       </div>
                     </div>
                     <div class="form-group mb-0 mt-md-0 mt-4">
-                      <MaterialTextArea id="message" class="input-group-static mb-4" :rows="4"
-                        placeholder="Necesito..." v-model="formData.mensaje">Como podemos ayudarte?</MaterialTextArea>
+                      <MaterialTextArea id="message" class="input-group-static mb-4" :rows="4" placeholder="Necesito..."
+                        v-model="formData.mensaje" :modelValue="formData.mensaje">Como podemos ayudarte?
+                      </MaterialTextArea>
                     </div>
                     <div class="row">
                       <div class="col-md-12 text-center">
-                        <MaterialButton @click="enviarMensaje" variant="gradient" color="bg-custom-default" class="mt-3 mb-0">Enviar mensaje
+                        <MaterialButton @click="enviarMensaje" variant="gradient" class="mt-3 mb-0">Enviar mensaje
                         </MaterialButton>
                       </div>
                     </div>

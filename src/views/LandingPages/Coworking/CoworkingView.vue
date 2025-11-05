@@ -1,15 +1,11 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
-import image from '@/assets/img/products/banner-medico-con-medico-usando-equipo.jpg'
+import { onMounted, onUnmounted } from "vue";
 
 //example components
 import NavbarDefault from "../../../examples/navbars/NavbarDefault.vue";
 import DefaultFooter from "../../../examples/footers/FooterDefault.vue";
 import Header from "../../../examples/Header.vue";
-
-//Vue Material Kit 2 Pro components
-import MaterialButton from "../../../components/MaterialButton.vue";
-import MaterialInput from "../../../components/MaterialInput.vue"
+import MaterialAlert from "../../../components/MaterialAlert.vue";
 
 //sections
 import Information from "./Sections/CoworkingInformation.vue";
@@ -21,10 +17,12 @@ import ContactView from "../../Support/ContactUs/ContactView.vue";
 
 //hooks
 const body = document.getElementsByTagName("body")[0];
+
 onMounted(() => {
   body.classList.add("coworking");
   body.classList.add("bg-gray-200");
 });
+
 onUnmounted(() => {
   body.classList.remove("coworking");
   body.classList.remove("bg-gray-200");
@@ -38,7 +36,7 @@ function cerrarModal() {
 <template>
   <div class="container-custom"></div>
 
-  <Header image="public/JYC_BANNER.png" title="." minHeight="min-vh-100"
+  <Header image="public/JYC_BANNER (1).png" title="." minHeight="min-vh-100"
   :description="{
     class: 'pe-md-5 me-md-5 opacity-8',
   }" mask="mask bg-gradient-dark opacity-0">
@@ -57,34 +55,7 @@ function cerrarModal() {
     <Testimonials />
     <AboutUs id="SobreNosotros" />
     <Places id="Productos" />
-    <div id="Contactanos" class="container">
-      <div class="my-10 py-5 bg-gradient-dark position-relative border-radius-xl" 
-      style="background-image: url('public/JYC_BANNER.png'); background-size: cover; background-position: start;"
-      loading="lazy">
-      <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-7"></div>
-
-        <div class="container position-relative z-index-2">
-          <div class="row container-contacto">
-            <div class="col-lg-5 col-md-8 m-auto text-start">
-              <h5 class="text-white mb-lg-0 mb-5">
-                ¿Buscas un accesorio específico?<br />
-                <span class="text-sm">Contáctanos y te ayudamos a encontrar la solución ideal para tu equipo.</span>
-              </h5>
-            </div>
-            <div class="col-lg-6 m-auto">
-              <div class="row">
-                <div class="col-sm-4 col-6 ps-sm-0 ms-auto">
-                  <button class="btn btn-primary" style="background-color: #dd9d5c;">
-                    Contactanos
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <ContactView/>
+    <ContactView id="Contactanos"/>
   </div>
 
   <DefaultFooter />
@@ -104,6 +75,13 @@ function cerrarModal() {
         <img v-for="image in store.informacion.images" :src="image" alt="" loading="lazy">
       </div>
     </div>
+  </div>
+
+  <!-- Alerta -->
+  <div class="fondoAlert" v-if="store.showAlert">
+    <MaterialAlert :dismissible="true" :color="store.alert.color" fontWeight="bold" class="m-3 mr-5">
+      <p class="font-weight-bold">{{ store.alert.texto }}</p>
+    </MaterialAlert>
   </div>
 
 </template>
@@ -130,8 +108,10 @@ function cerrarModal() {
 }
 
 .container-custom {
-  background: linear-gradient(180deg,rgba(244, 244, 244, 1) 3%, rgba(34, 98, 163, 1) 40%, rgba(235, 237, 240, 1) 100%);
-  height: 130vh;
+  /* background: linear-gradient(180deg,rgba(244, 244, 244, 1) 3%, rgba(34, 98, 163, 1) 40%, rgba(235, 237, 240, 1) 100%); */
+  background: #FFFFFF;
+  background: linear-gradient(180deg,rgba(255, 255, 255, 1) 59%, rgba(237, 239, 242, 1) 91%);
+  height: 160vh;
   width: 100%;
   position: absolute;
   top: 0;
@@ -150,6 +130,19 @@ function cerrarModal() {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(2px);
+  overflow-y: none;
+}
+
+.fondoAlert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 105099999999;
+  display: flex;
+  justify-content: end;
+  align-items: start;
   overflow-y: none;
 }
 

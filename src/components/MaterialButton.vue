@@ -64,8 +64,8 @@ function getClasses(variant, color, size, fullWidth, disabled) {
 </script>
 <template>
   <button
-    class="btn btn-primary" style="background-color: #2262a3;"
-    :class="getClasses(variant, color, size, fullWidth, disabled)"
+    class="btn btn-primary shadow-dark" style="background-color: #2262a3;"
+    :class="getClasses(variant, size, fullWidth, disabled)"
   >
     <slot>Button</slot>
   </button>
