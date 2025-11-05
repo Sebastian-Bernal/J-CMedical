@@ -211,21 +211,20 @@ defineProps({
   }
 
   .textoContainer {
-    padding: 0 2rem;
-    flex-direction: column;
-    justify-content: center;
+    padding: 0 1rem;
   }
 
+  .textoImagen img{
+    width: 40%;
+  }
+  
   .textIzquierdo {
+    width: 30%;
     align-self: start;
   }
 
   .textDerecho {
     align-self: end;
-  }
-
-  .textoImagen img{
-    width: 40%;
   }
 
   .section-buttons {
