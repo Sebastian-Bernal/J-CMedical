@@ -7,7 +7,7 @@ import DefaultFooter from "../../../examples/footers/FooterDefault.vue";
 import emailjs from '@emailjs/browser'
 
 //image
-import image from "../../../../public/mano-en-guante-medico-apuntando-la-tecnologia-medica-de-pantalla-virtual.jpg"
+import image from "/mano-en-guante-medico-apuntando-la-tecnologia-medica-de-pantalla-virtual.jpg"
 
 //material components
 import MaterialInput from "../../../components/MaterialInput.vue";

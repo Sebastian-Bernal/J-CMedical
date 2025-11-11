@@ -7,7 +7,7 @@
           <div class="row py-5">
             <div class="col-xl-4 col-md-6 px-5 position-relative">
               <img class=" border-radius-md img-custom position-relative z-index-2 mt-n7"
-                src="src/assets/img/products/banner-medico-con-medico-usando-equipo.jpg" loading="lazy" alt="Medico" />
+                src="@/assets/img/products/banner-medico-con-medico-usando-equipo.jpg" loading="lazy" alt="Medico" />
             </div>
 
             <div class="col-xl-4 col-md-5 z-index-2 position-relative px-md-3 px-5 my-md-auto mt-4">

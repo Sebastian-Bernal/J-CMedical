@@ -121,7 +121,7 @@ defineProps({
         <div class="col-md-3 mb-4">
           <div>
             <a :href="brand.route">
-              <img src="src/assets/img/products/jyc_logo.png" width="80" alt="Logo J&C Medical" class="mb-3 footer-logo"/>
+              <img src="@/assets/img/products/jyc_logo.png" width="80" alt="Logo J&C Medical" class="mb-3 footer-logo"/>
             </a>
             <h6 class="font-weight-bolder mb-4">J&C MEDICAL</h6>
           </div>

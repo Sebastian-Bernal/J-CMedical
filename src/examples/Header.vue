@@ -55,13 +55,13 @@ defineProps({
     <div class="section-buttons">
       <div class="buttons-custom">
         <a href="https://www.instagram.com/" target="_blank">
-          <img src="public/instagram_icon_138461.png" alt="instagram" />
+          <img src="/instagram_icon_138461.png" alt="instagram" />
         </a>
         <a href="https://www.facebook.com/" target="_blank">
-          <img src="public/social_facebook_fb_75.png" alt="facebook" width="25px" />
+          <img src="/social_facebook_fb_75.png" alt="facebook" width="25px" />
         </a>
         <a href="https://www.whatsapp.com/?lang=es" target="_blank">
-          <img src="public/whatsapp_icon-icons.com_65489.png" alt="whatsApp" />
+          <img src="/whatsapp_icon-icons.com_65489.png" alt="whatsApp" />
         </a>
       </div>
     </div>
@@ -69,8 +69,8 @@ defineProps({
     <img :src="image" class="page-header-custom" />
     <div class="textoImagen">
       <div class="textoContainer">
-        <img src="public/texto_l.png" alt="eslogan izquierdo" class="textIzquierdo">
-        <img src="public/texto_r.png" alt="eslogan derecho" class="textDerecho">
+        <img src="/texto_l.png" alt="eslogan izquierdo" class="textIzquierdo">
+        <img src="/texto_r.png" alt="eslogan derecho" class="textDerecho">
       </div>
     </div>
   </header>
