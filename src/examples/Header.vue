@@ -46,22 +46,22 @@ defineProps({
 <template>
   <header class="header-2 position-relative">
     <div class="section-actions">
-      <div class="buttons-custom">
+      <div class="buttons-custom gap-sm-2">
         <a href="#Contactanos" class="btn btn-primary" style="background-color: #dd9d5c;">Contactanos</a>
-        <a href="#SobreNosotros" class="btn btn-dark">Sobre Nosotros</a>
+        <a href="#SobreNosotros" class="btn btn-dark d-md-block d-none">Sobre Nosotros</a>
       </div>
     </div>
 
     <div class="section-buttons">
-      <div class="buttons-custom">
+      <div class="buttons-custom gap-sm-3">
         <a href="https://www.instagram.com/" target="_blank">
-          <img src="public/instagram_icon_138461.png" alt="instagram" />
+          <img src="/instagram_icon_138461.png" alt="instagram" />
         </a>
         <a href="https://www.facebook.com/" target="_blank">
-          <img src="public/social_facebook_fb_75.png" alt="facebook" width="25px" />
+          <img src="/social_facebook_fb_75.png" alt="facebook" width="25px" />
         </a>
         <a href="https://www.whatsapp.com/?lang=es" target="_blank">
-          <img src="public/whatsapp_icon-icons.com_65489.png" alt="whatsApp" />
+          <img src="/whatsapp_icon-icons.com_65489.png" alt="whatsApp" />
         </a>
       </div>
     </div>
@@ -69,13 +69,13 @@ defineProps({
     <img :src="image" class="page-header-custom" />
     <div class="textoImagen">
       <div class="textoContainer">
-        <img src="public/texto_l.png" alt="eslogan izquierdo" class="textIzquierdo">
-        <img src="public/texto_r.png" alt="eslogan derecho" class="textDerecho">
+        <img src="/texto_l.png" alt="eslogan izquierdo" class="textIzquierdo">
+        <img src="/texto_r.png" alt="eslogan derecho" class="textDerecho">
       </div>
     </div>
   </header>
 
-  <div class="abajo">
+  <div class="abajo d-md-block d-none">
     <div>
       <a href="#Inicio">
         <img :src="downArrow" alt="Abajo" width="25">
@@ -114,13 +114,6 @@ defineProps({
 .logo {
   width: 100px;
   filter: invert(1);
-}
-
-.section-actions {
-  position: absolute;
-  top: 15px;
-  left: 50px;
-  z-index: 5;
 }
 
 .section-actions {
@@ -202,7 +195,8 @@ defineProps({
   }
 }
 
-@media screen and (max-width: 724px) {
+@media screen and (max-width: 768px) {
+
   .textoImagen {
     position: inherit;
     bottom: 5vh;
@@ -232,13 +226,7 @@ defineProps({
     right: 20px;
   }
 
-  .section-actions {
-    top: 10px;
-    left: 10px;
-  }
-
   .buttons-custom {
-    gap: 2px;
     flex-direction: column;
   }
 
@@ -250,6 +238,25 @@ defineProps({
   .section-buttons a {
     width: 25px;
     height: 25px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .section-actions {
+    top: 93%;
+    left: 0;
+    right: 0;
+    position: absolute;
+  }
+
+  .section-actions .buttons-custom {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-actions .buttons-custom a {
+    width: 75%;
   }
 }
 

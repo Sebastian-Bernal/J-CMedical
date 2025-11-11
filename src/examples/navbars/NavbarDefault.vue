@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onBeforeMount } from "vue";
 import { useWindowsWidth } from "../../assets/js/useWindowsWidth";
 
 // images
@@ -87,15 +87,22 @@ watch(
     }
   }
 );
+
+const navbarAbierto = ref(false);
+function showNav () {
+  navbarAbierto.value = !navbarAbierto.value
+}
+
 </script>
 <template>
   <nav class="navbar navbar-expand-lg top-0" :class="{
     'z-index-3 w-100 shadow-none navbar-transparent position-absolute my-3':
       props.transparent,
-    'my-3 blur border-radius-lg z-index-3 py-2 shadow py-2 start-0 end-0 mx-4 position-absolute mt-2':
+    'my-3 blur border-radius-lg z-index-3 py-2 shadow py-2 start-0 end-0 mx-md-4 mx-2 position-absolute mt-2':
       props.sticky,
     'navbar-light bg-white py-3': props.light,
-    ' navbar-dark bg-gradient-dark z-index-3 py-3': props.dark
+    ' navbar-dark bg-gradient-dark z-index-3 py-3': props.dark,
+    'custom-nav': !navbarAbierto
   }">
     <div :class="props.transparent || props.light || props.dark
         ? 'container'
@@ -110,7 +117,7 @@ watch(
         <span class="color-default">J&C MEDICAL</span>
       </RouterLink>
 
-      <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+      <button class="navbar-toggler shadow-none ms-2 bg-white" type="button" data-bs-toggle="collapse" @click="showNav"
         data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon mt-2">
           <span class="navbar-toggler-bar bar1"></span>
@@ -150,5 +157,13 @@ watch(
 <style scoped>
 .nav-link:hover {
   color: #264e78 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .custom-nav {
+    box-shadow: none !important;
+    background-color: inherit !important;
+    backdrop-filter: none;
+  }
 }
 </style>

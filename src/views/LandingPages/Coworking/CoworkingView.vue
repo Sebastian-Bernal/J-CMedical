@@ -36,7 +36,7 @@ function cerrarModal() {
 <template>
   <div class="container-custom"></div>
 
-  <Header image="public/JYC_BANNER (1).png" title="." minHeight="min-vh-100"
+  <Header image="/JYC_BANNER (1).png" title="." minHeight="min-vh-100"
   :description="{
     class: 'pe-md-5 me-md-5 opacity-8',
   }" mask="mask bg-gradient-dark opacity-0">

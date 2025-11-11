@@ -46,19 +46,34 @@ function backgroundColor(variant, color) {
 </script>
 <template>
   <div :class="direction">
-    <div
-      class="icon icon-shape text-center border-radius-xl mt-n4 bg-custom-default"
-      :class="`icon-${size}  shadow-${color}`"
-    >
-      <i
-        class="material-icons opacity-10"
-        :class="typeof icon == 'object' ? icon.color : ''"
-        >{{ typeof icon == "string" ? icon : icon.component }}</i
-      >
+    <div class="header-card-custom">
+      <div class="icon icon-shape text-center border-radius-xl mt-md-n4 bg-custom-default"
+        :class="`icon-${size}  shadow-${color}`">
+        <i class="material-icons opacity-10" :class="typeof icon == 'object' ? icon.color : ''">{{ typeof icon ==
+          "string" ? icon : icon.component }}</i>
+      </div>
+      <h5 class="mt-3">{{ title }}</h5>
     </div>
-    <h5 class="mt-3">{{ title }}</h5>
     <p>
       {{ description }}
     </p>
   </div>
 </template>
+
+<style scoped>
+@media screen and (max-width: 768px) {
+  .header-card-custom {
+    display: flex;
+    align-items: center;
+    gap: 20px !important;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .header-card h5{
+    margin: 0px !important;
+    padding: 0;
+  }
+}
+</style>

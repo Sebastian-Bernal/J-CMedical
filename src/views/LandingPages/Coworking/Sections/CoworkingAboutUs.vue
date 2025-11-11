@@ -14,7 +14,7 @@ function showInfo() {
       <div class="row">
         <div class="col-lg-5">
           <h3 class="mt-2">Acerca de Nosotros</h3>
-          <h5>Comprometidos con la innovación y la seguridad clínica</h5>
+          <h5 class="d-md-block d-none">Comprometidos con la innovación y la seguridad clínica</h5>
           <p>
             Somos una empresa dedicada a proveer accesorios médicos de alta calidad, con un enfoque en la innovación
             tecnológica y la seguridad del paciente. Nuestro equipo está conformado por profesionales con experiencia en
@@ -43,10 +43,10 @@ function showInfo() {
         </div>
       </div>
 
-      <div class="container mt-7">
+      <div class="p-md-5 mt-md-7 mt-4">
         <div class="row g-4 align-items-start">
           <!-- Misión -->
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-12">
             <div class="p-4 rounded-6 shadow text-white min-h-100 infoMV bg-custom-oscuro">
               <h3 class="mb-3 d-flex align-items-center text-white">
                 <i class="material-icons me-2 color-warning">favorite</i> Misión
@@ -63,7 +63,7 @@ function showInfo() {
           </div>
 
           <!-- Visión -->
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-12">
             <div class="p-4 rounded-4 shadow bg-light text-dark min-h-100 infoMV">
               <h3 class="mb-3 d-flex align-items-center">
                 <i class="material-icons me-2 color-warning">monitor_heart</i> Visión
@@ -86,5 +86,6 @@ function showInfo() {
 .infoMV {
   border-radius: 10px;
   min-height: 250px;
+  width: 100%;
 }
 </style>

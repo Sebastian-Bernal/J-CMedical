@@ -53,3 +53,13 @@ function backgroundColor(variant, color) {
     </div>
   </div>
 </template>
+
+<style scoped>
+@media screen and (max-width: 580px) {
+  .icon-shape {
+    width: 50% !important;
+    height: 40px !important;
+  }
+}
+
+</style>

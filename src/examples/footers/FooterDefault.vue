@@ -119,34 +119,23 @@ defineProps({
     <div class="container">
       <div class="row">
         <div class="col-md-3 mb-4">
-          <div>
+          <div class="footer-custom">
             <a :href="brand.route">
-              <img src="src/assets/img/products/jyc_logo.png" width="80" alt="Logo J&C Medical" class="mb-3 footer-logo"/>
+              <img src="src/assets/img/products/jyc_logo.png" width="130" alt="Logo J&C Medical"
+                class="mb-md-3 mb-n3 footer-logo" />
             </a>
-            <h6 class="font-weight-bolder mb-4">J&C MEDICAL</h6>
+            <h6 class="font-weight-bolder mb-md-4 d-md-block d-none">J&C MEDICAL</h6>
           </div>
           <div>
             <ul class="d-flex flex-row ms-n3 nav">
-              <li
-                class="nav-item"
-                v-for="{ icon, link } of socials"
-                :key="link"
-              >
-                <a
-                  class="nav-link pe-1"
-                  :href="link"
-                  v-html="icon"
-                >
+              <li class="nav-item" v-for="{ icon, link } of socials" :key="link">
+                <a class="nav-link pe-1" :href="link" v-html="icon">
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div
-          class="col-md-2 col-sm-6 col-6 mb-4"
-          v-for="{ name, items } of menus"
-          :key="name"
-        >
+        <div class="col-md-2 col-sm-6 col-6 mb-4 d-md-block d-none" v-for="{ name, items } of menus" :key="name">
           <h6 class="text-sm">{{ name }}</h6>
           <ul class="flex-column ms-n3 nav">
             <li class="nav-item" v-for="item of items" :key="item.name">
@@ -163,13 +152,31 @@ defineProps({
               Todos los derechos reservados. Copyright ©
               {{ new Date().getFullYear() }}
               J&C MEDICAL
-              <a target="_blank"
-                >Compañia</a
-              >.
+              <a target="_blank">Compañia</a>.
             </p>
           </div>
         </div>
+
       </div>
     </div>
   </footer>
 </template>
+<style scoped>
+.footer-logo {
+  max-width: 3rem !important;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-logo {
+    max-width: 6rem !important;
+    margin-bottom: 0;
+  }
+}
+</style>
