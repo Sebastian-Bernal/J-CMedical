@@ -257,6 +257,10 @@ defineProps({
 
   .section-actions .buttons-custom a {
     width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
   }
 }
 
